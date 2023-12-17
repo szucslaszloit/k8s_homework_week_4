@@ -4,24 +4,26 @@ kind: Deployment
 metadata:
   name: frontapp
   labels:
-    training: block4
     homework: frontapp
+    training: block4
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontapp
+      homework: frontapp
+      training: block4
   template:
     metadata:
       labels:
-        app: frontapp
+        homework: frontapp
+        training: block4
     spec:
       containers:
         - name: frontapp
           image: quay.io/drsylent/cubix/block3/homework-frontapp:springboot3
           env:
             - name: BACK_URL
-              value: "http://backapp"
+              value: "http://backapp:8080"
             - name: APP_DEFAULT_MESSAGE
               value: "frontapp"
             - name: JAVA_OPTS
