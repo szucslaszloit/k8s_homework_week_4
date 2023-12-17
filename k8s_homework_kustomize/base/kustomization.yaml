@@ -4,5 +4,3 @@ kind: Kustomization
 resources:
   - frontapp.yaml
   - backapp.yaml
-  - configmap.yaml
-  - secret.yaml

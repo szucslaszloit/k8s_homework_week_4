@@ -1,9 +1,0 @@
-# configmap.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-config
-  labels:
-    training: block4
-data:
-  JAVA_OPTS: -Dspring.main.banner-mode=off

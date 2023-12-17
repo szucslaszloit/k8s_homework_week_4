@@ -23,15 +23,9 @@ spec:
             - name: APP_DEFAULT_MESSAGE
               value: "backapp"
             - name: JAVA_OPTS
-              valueFrom:
-                configMapKeyRef:
-                  name: app-config
-                  key: JAVA_OPTS
-            - name: SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: app-secret
-                  key: SECRET_KEY
+              value: -Dspring.main.banner-mode=off
+          ports:
+            - containerPort: 8080          
 
 
 ---

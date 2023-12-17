@@ -1,4 +1,4 @@
-# test/ingress.yaml
+# prod/ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -8,7 +8,7 @@ metadata:
     homework: frontapp
 spec:
   rules:
-  - host: "other.cubix.localhost"
+  - host: "application.cubix.localhost"
     http:
       paths:
       - pathType: Prefix
@@ -17,4 +17,4 @@ spec:
           service:
             name: frontapp
             port:
-              number: 80
+              number: 8080
