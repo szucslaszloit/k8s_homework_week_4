@@ -30,12 +30,15 @@ kubectl get pods -n hw4-dev
 Logok kiíratása:
 
 kubectl logs frontapp-pod-neve -n hw4-test
+
 kubectl logs backapp-pod-neve -n hw4-test
 
 kubectl logs frontapp-pod-neve -n hw4-dev
+
 kubectl logs backapp-pod-neve -n hw4-dev
 
 kubectl logs frontapp-pod-neve -n hw4-prod
+
 kubectl logs backapp-pod-neve -n hw4-prod
 
 
