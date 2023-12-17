@@ -3,6 +3,10 @@ Elkészítettem a házifeladatot, egyelőre csak Kustomize-al, kérem nézd meg,
 A Deploymentet, és a Sevice YAML-öket egy-egy fájlba tettem: /base/frontapp.yaml és /base/backapp.yaml
 (Nem vettem külön külön őket.)
 
+Prodból beenged a http://application.cubix.localhost:8080/frontapp
+Testből beenged a http://other.cubix.localhost:8080/frontapp
+Devből egyik sem enged be.
+
 Kiadott parancsok:
 
 Elszeparált névterek kreálása:
@@ -43,6 +47,16 @@ kubectl logs backapp-pod-neve -n hw4-dev
 kubectl logs frontapp-pod-neve -n hw4-prod
 
 kubectl logs backapp-pod-neve -n hw4-prod
+
+Erőforrások törlése:
+
+kubectl delete -k overlays/prod
+
+kubectl delete -k overlays/test
+
+kubectl delete -k overlays/dev
+
+
 
 
 
