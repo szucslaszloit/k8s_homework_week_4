@@ -6,4 +6,4 @@ metadata:
   labels:
     training: block4
 data:
-  JAVA_OPTS: ""
+  JAVA_OPTS: -Dspring.main.banner-mode=off

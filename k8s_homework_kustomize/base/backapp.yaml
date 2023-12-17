@@ -40,12 +40,13 @@ kind: Service
 metadata:
   name: backapp
   labels:
-    training: block4
     homework: backapp
+    training: block4
 spec:
+  type: ClusterIP
   selector:
-    app: backapp
+    homework: backapp
+    training: block4
   ports:
-    - protocol: TCP
-      port: 80
+    - port: 8080
       targetPort: 8080
