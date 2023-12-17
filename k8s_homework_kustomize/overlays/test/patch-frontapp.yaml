@@ -1,0 +1,8 @@
+# dev/patch.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontapp
+spec:
+  replicas: 1
+

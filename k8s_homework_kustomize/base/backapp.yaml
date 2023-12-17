@@ -1,0 +1,51 @@
+# backapp.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backapp
+  labels:
+    training: block4
+    homework: backapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backapp
+  template:
+    metadata:
+      labels:
+        app: backapp
+    spec:
+      containers:
+        - name: backapp
+          image: quay.io/drsylent/cubix/block3/homework-backapp:springboot3
+          env:
+            - name: APP_DEFAULT_MESSAGE
+              value: "backapp"
+            - name: JAVA_OPTS
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: JAVA_OPTS
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: SECRET_KEY
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backapp
+  labels:
+    training: block4
+    homework: backapp
+spec:
+  selector:
+    app: backapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
