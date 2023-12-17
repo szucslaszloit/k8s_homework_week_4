@@ -1,5 +1,8 @@
 Elkészítettem a házifeladatot, egyelőre csak Kustomize-al, kérem nézd meg, és ha jó, megyek rá a Helm -es megoldásra is.
 
+A Deploymentet, és a Sevice YAML-öket egy-egy fájlba tettem: /base/frontapp.yaml és /base/backapp.yaml
+(Nem vettem külön külön őket.)
+
 Kiadott parancsok:
 
 Elszeparált névterek kreálása:
