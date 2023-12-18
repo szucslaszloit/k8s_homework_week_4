@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.frontapp.name }}
+  labels:
+    training: block4
+    homework: frontapp
+spec:
+  replicas: {{ .Values.frontapp.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.frontapp.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.frontapp.name }}
+    spec:
+      containers:
+        - name: {{ .Values.frontapp.name }}
+          image: "{{ .Values.frontapp.image.repository }}:{{ .Values.frontapp.image.tag }}"
+          env:
+            - name: BACK_URL
+              value: "http://backapp:8080"
+            - name: APP_DEFAULT_MESSAGE
+              value: "frontapp"
+            - name: JAVA_OPTS
+              value: ""
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP

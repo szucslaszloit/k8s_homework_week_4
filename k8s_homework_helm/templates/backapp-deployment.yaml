@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.backapp.name }}
+  labels:
+    training: block4
+    homework: backapp
+spec:
+  replicas: {{ .Values.backapp.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.backapp.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.backapp.name }}
+    spec:
+      containers:
+        - name: {{ .Values.backapp.name }}
+          image: "{{ .Values.backapp.image.repository }}:{{ .Values.backapp.image.tag }}"
+          env:
+            - name: APP_DEFAULT_MESSAGE
+              value: "backapp"
+            - name: JAVA_OPTS
+              value: -Dspring.main.banner-mode=off 
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP

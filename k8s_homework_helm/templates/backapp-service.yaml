@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.backapp.name }}
+  labels:
+    training: block4
+    homework: backapp
+spec:
+  type: {{ .Values.backapp.service.type }}
+  ports:
+    - port: {{ .Values.backapp.service.port }}
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ .Values.backapp.name }}
+    homework: backapp
+    training: block4
