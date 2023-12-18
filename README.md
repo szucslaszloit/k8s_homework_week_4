@@ -56,7 +56,21 @@ kubectl delete -k overlays/test
 
 kubectl delete -k overlays/dev
 
+Helm-es parancsok:
 
+helm install My-App -f test-values.yaml . -n hw4-test
+helm install My-App -f prod-values.yaml . -n hw4-prod
+helm install My-App -f test-values.yaml . -n dev-test
+
+Címkék szerinti lekérdezés:
+kubectl get all -l homework=backapp -n hw4-test
+kubectl get all -l homework=frontapp -n hw4-test
+
+kubectl get all -l homework=backapp -n hw4-prod
+kubectl get all -l homework=frontapp -n hw4-prod
+
+kubectl get all -l homework=backapp -n hw4-dev
+kubectl get all -l homework=frontapp -n hw4-dev
 
 
 
