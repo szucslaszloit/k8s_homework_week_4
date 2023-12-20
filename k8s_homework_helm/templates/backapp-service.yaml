@@ -13,6 +13,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: {{ .Values.backapp.name }}
-    homework: backapp
+    homework: {{ .Values.backapp.name }}
     training: block4

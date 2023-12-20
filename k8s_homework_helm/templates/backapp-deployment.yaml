@@ -9,11 +9,13 @@ spec:
   replicas: {{ .Values.backapp.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.backapp.name }}
+      training: block4
+      homework: {{ .Values.backapp.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.backapp.name }}
+        training: block4
+        homework: {{ .Values.backapp.name }}
     spec:
       containers:
         - name: {{ .Values.backapp.name }}

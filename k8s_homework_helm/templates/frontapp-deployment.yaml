@@ -4,16 +4,18 @@ metadata:
   name: {{ .Values.frontapp.name }}
   labels:
     training: block4
-    homework: frontapp
+    homework: {{ .Values.frontapp.name }}
 spec:
   replicas: {{ .Values.frontapp.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.frontapp.name }}
+      training: block4
+      homework: {{ .Values.frontapp.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.frontapp.name }}
+        training: block4
+        homework: {{ .Values.frontapp.name }}
     spec:
       containers:
         - name: {{ .Values.frontapp.name }}

@@ -12,9 +12,11 @@ frontapp:
   service:
     type: NodePort
     selector:
+      app: frontapp
       homework: frontapp
       training: block4
     port: 8080
+  host: "other.cubix.localhost"
 
 backapp:
   name: backapp
@@ -26,6 +28,7 @@ backapp:
   service:
     type: ClusterIP
     selector:
+      app: frontapp
       homework: backapp
       training: block4
     port: 8080
@@ -69,17 +72,6 @@ ingress:
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: "other.cubix.localhost"
-      paths:
-        - path: /
-          pathType: Prefix
-          path: "/frontapp"
-          backend:
-            service:
-              name: frontapp
-              port:
-                number: 8080
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

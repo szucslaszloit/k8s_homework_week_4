@@ -15,6 +15,7 @@ frontapp:
       homework: frontapp
       training: block4
     port: 8080
+  host: "application.cubix.localhost"
 
 backapp:
   name: backapp
@@ -68,17 +69,6 @@ ingress:
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: "application.cubix.localhost"
-      paths:
-        - path: /
-          pathType: Prefix
-          path: "/frontapp"
-          backend:
-            service:
-            name: frontapp
-            port:
-              number: 8080
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
