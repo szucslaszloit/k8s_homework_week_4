@@ -17,6 +17,10 @@ frontapp:
       training: block4
     port: 8080
   host: "other.cubix.localhost"
+  back_url: BACK_URL
+  backurl_value: "http://backapp:8080"
+  back_url_name: APP_DEFAULT_MESSAGE
+  back_url_java: JAVA_OPTS
 
 backapp:
   name: backapp
@@ -32,6 +36,9 @@ backapp:
       homework: backapp
       training: block4
     port: 8080
+  backapp_name: APP_DEFAULT_MESSAGE
+  backapp_java: JAVA_OPTS
+  backapp_java_value: -Dspring.main.banner-mode=off
 
 imagePullSecrets: []
 nameOverride: ""
@@ -76,6 +83,9 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+  pathType: Prefix
+  path: "/frontapp"
+  port_number: 8080
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

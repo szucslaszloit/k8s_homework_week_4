@@ -3,29 +3,29 @@ kind: Deployment
 metadata:
   name: {{ .Values.frontapp.name }}
   labels:
-    training: block4
+    training: {{ .Values.frontapp.service.selector.training }}
     homework: {{ .Values.frontapp.name }}
 spec:
   replicas: {{ .Values.frontapp.replicaCount }}
   selector:
     matchLabels:
-      training: block4
+      training: {{ .Values.frontapp.service.selector.training }}
       homework: {{ .Values.frontapp.name }}
   template:
     metadata:
       labels:
-        training: block4
+        training: {{ .Values.frontapp.service.selector.training }}
         homework: {{ .Values.frontapp.name }}
     spec:
       containers:
         - name: {{ .Values.frontapp.name }}
           image: "{{ .Values.frontapp.image.repository }}:{{ .Values.frontapp.image.tag }}"
           env:
-            - name: BACK_URL
-              value: "http://backapp:8080"
-            - name: APP_DEFAULT_MESSAGE
-              value: "frontapp"
-            - name: JAVA_OPTS
+            - name: {{ .Values.frontapp.back_url }}
+              value: {{ .Values.frontapp.backurl_value }}
+            - name: {{ .Values.frontapp.back_url_name }}
+              value: {{ .Values.frontapp.name }}
+            - name: {{ .Values.frontapp.back_url_java }}
               value: ""
           ports:
             - name: http

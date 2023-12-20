@@ -3,17 +3,17 @@ kind: Ingress
 metadata:
   name: {{ .Values.frontapp.name }}
   labels:
-    training: block4
+    training: {{ .Values.frontapp.service.selector.training }}
     homework: {{ .Values.frontapp.name }}
 spec:
   rules:
   - host: "{{ .Values.frontapp.host }}"
     http:
       paths:
-      - pathType: Prefix
-        path: "/frontapp"
+      - pathType: {{ .Values.ingress.pathType }}
+        path: {{ .Values.ingress.path }}
         backend:
           service:
             name: {{ .Values.frontapp.name }}
             port:
-              number: 8080
+              number: {{ .Values.ingress.port_number }}

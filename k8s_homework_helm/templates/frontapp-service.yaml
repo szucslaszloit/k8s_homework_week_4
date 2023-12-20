@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: {{ .Values.frontapp.name }}
   labels:
-    training: block4
-    homework: frontapp
+    training: {{ .Values.frontapp.service.selector.training }}
+    homework: {{ .Values.frontapp.name }}
 spec:
   type: {{ .Values.frontapp.service.type }}
   ports:
@@ -14,4 +14,4 @@ spec:
       name: http
   selector:
     homework: {{ .Values.frontapp.name }}
-    training: block4
+    training: {{ .Values.frontapp.service.selector.training }}

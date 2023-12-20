@@ -3,28 +3,28 @@ kind: Deployment
 metadata:
   name: {{ .Values.backapp.name }}
   labels:
-    training: block4
-    homework: backapp
+    training: {{ .Values.backapp.service.selector.training }}
+    homework: {{ .Values.backapp.name }}
 spec:
   replicas: {{ .Values.backapp.replicaCount }}
   selector:
     matchLabels:
-      training: block4
+      training: {{ .Values.backapp.service.selector.training }}
       homework: {{ .Values.backapp.name }}
   template:
     metadata:
       labels:
-        training: block4
+        training: {{ .Values.backapp.service.selector.training }}
         homework: {{ .Values.backapp.name }}
     spec:
       containers:
         - name: {{ .Values.backapp.name }}
           image: "{{ .Values.backapp.image.repository }}:{{ .Values.backapp.image.tag }}"
           env:
-            - name: APP_DEFAULT_MESSAGE
-              value: "backapp"
-            - name: JAVA_OPTS
-              value: -Dspring.main.banner-mode=off 
+            - name: {{ .Values.backapp.backapp_name }}
+              value: {{ .Values.backapp.name }}
+            - name: {{ .Values.backapp.backapp_java }}
+              value: {{ .Values.backapp.backapp_java_value }}
           ports:
             - name: http
               containerPort: 8080
