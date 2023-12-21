@@ -12,13 +12,11 @@ frontapp:
   service:
     type: NodePort
     selector:
-      app: frontapp
       homework: frontapp
       training: block4
-    port: 8080
-    targetport: 8080
+    port: 1080
+    targetport: 1080
     
-  back_url: "http://backapp:8080"
   default_message: "frontapp"
   java_opts: ""
 
@@ -32,10 +30,9 @@ backapp:
   service:
     type: ClusterIP
     selector:
-      app: frontapp
       homework: backapp
       training: block4
-    port: 8080
+    port: 1080
     targetport: 8080
     
   default_message: "backapp"
@@ -86,7 +83,6 @@ ingress:
   #      - chart-example.local
   pathType: Prefix
   path: "/frontapp"
-  port_number: 1010
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

@@ -26,7 +26,7 @@ spec:
             - name: JAVA_OPTS
               value: {{ .Values.frontapp.java_opts }}
             - name: BACK_URL
-              value: {{ .Values.frontapp.back_url }}
+              value: http://{{ .Values.backapp.name }}:{{ .Values.backapp.service.port}}
             {{- with .Values.extraEnv }}
             {{- range . }}
             - name: {{ .name }}

@@ -16,4 +16,4 @@ spec:
           service:
             name: {{ .Values.frontapp.name }}
             port:
-              number: {{ .Values.ingress.port_number }}
+              number: {{ .Values.frontapp.service.port }}
