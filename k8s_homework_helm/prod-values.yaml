@@ -15,11 +15,11 @@ frontapp:
       homework: frontapp
       training: block4
     port: 8080
+    targetport: 8080  
   host: "application.cubix.localhost"
-  back_url: BACK_URL
-  backurl_value: "http://backapp:8080"
-  back_url_name: APP_DEFAULT_MESSAGE
-  back_url_java: JAVA_OPT
+  back_url: "http://backapp:8080"
+  default_message: "frontapp"
+  java_opts: ""
 
 backapp:
   name: backapp
@@ -34,9 +34,10 @@ backapp:
       homework: backapp
       training: block4
     port: 8080
-  backapp_name: APP_DEFAULT_MESSAGE
-  backapp_java: JAVA_OPTS
-  backapp_java_value: -Dspring.main.banner-mode=off
+    targetport: 8080
+    
+  default_message: "backapp"
+  java_opts: "-Dspring.main.banner-mode=off"
     
 imagePullSecrets: []
 nameOverride: ""

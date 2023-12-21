@@ -21,12 +21,18 @@ spec:
         - name: {{ .Values.frontapp.name }}
           image: "{{ .Values.frontapp.image.repository }}:{{ .Values.frontapp.image.tag }}"
           env:
-            - name: {{ .Values.frontapp.back_url }}
-              value: {{ .Values.frontapp.backurl_value }}
-            - name: {{ .Values.frontapp.back_url_name }}
-              value: {{ .Values.frontapp.name }}
-            - name: {{ .Values.frontapp.back_url_java }}
-              value: ""
+            - name: APP_DEFAULT_MESSAGE
+              value: {{ .Values.frontapp.default_message }}
+            - name: JAVA_OPTS
+              value: {{ .Values.frontapp.java_opts }}
+            - name: BACK_URL
+              value: {{ .Values.frontapp.back_url }}
+            {{- with .Values.extraEnv }}
+            {{- range . }}
+            - name: {{ .name }}
+              value: {{ .value }}
+            {{- end }}
+            {{- end }}
           ports:
             - name: http
               containerPort: 8080

@@ -9,7 +9,7 @@ spec:
   type: {{ .Values.backapp.service.type }}
   ports:
     - port: {{ .Values.backapp.service.port }}
-      targetPort: 8080
+      targetPort: {{ .Values.backapp.service.targetport }}
       protocol: TCP
       name: http
   selector:

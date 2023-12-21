@@ -21,10 +21,16 @@ spec:
         - name: {{ .Values.backapp.name }}
           image: "{{ .Values.backapp.image.repository }}:{{ .Values.backapp.image.tag }}"
           env:
-            - name: {{ .Values.backapp.backapp_name }}
-              value: {{ .Values.backapp.name }}
-            - name: {{ .Values.backapp.backapp_java }}
-              value: {{ .Values.backapp.backapp_java_value }}
+            - name: APP_DEFAULT_MESSAGE
+              value: {{ .Values.backapp.default_message }}
+            - name: JAVA_OPTS
+              value: {{ .Values.backapp.java_opts }}
+            {{- with .Values.extraEnv }}
+            {{- range . }}
+            - name: {{ .name }}
+              value: {{ .value }}
+            {{- end }}
+            {{- end }}
           ports:
             - name: http
               containerPort: 8080
